@@ -15,12 +15,13 @@ private let clientSecret: String? = nil
 
 // Model class that represents a GitHub repository
 class GithubRepo: CustomStringConvertible {
-
+    
     var name: String?
     var ownerHandle: String?
     var ownerAvatarURL: String?
     var stars: Int?
     var forks: Int?
+    var repoDescription: String?
     
     // Initializes a GitHubRepo from a JSON dictionary
     init(jsonResult: NSDictionary) {
@@ -44,6 +45,10 @@ class GithubRepo: CustomStringConvertible {
                 self.ownerAvatarURL = ownerAvatarURL
             }
         }
+        
+        if let repoDescription = jsonResult["description"] as? String {
+            self.repoDescription = repoDescription
+        }
     }
     
     // Actually fetch the list of repositories from the GitHub API.
@@ -51,7 +56,7 @@ class GithubRepo: CustomStringConvertible {
     class func fetchRepos(_ settings: GithubRepoSearchSettings, successCallback: @escaping ([GithubRepo]) -> (), error: ((Error?) -> ())?) {
         let manager = AFHTTPRequestOperationManager()
         let params = queryParamsWithSettings(settings)
-
+        
         manager.get(reposUrl, parameters: params, success: { (operation: AFHTTPRequestOperation, responseObject: Any) in
             if let response = responseObject as? NSDictionary, let results = response["items"] as? NSArray {
                 var repos: [GithubRepo] = []
@@ -91,13 +96,14 @@ class GithubRepo: CustomStringConvertible {
         
         return params
     }
-
+    
     // Creates a text representation of a GitHub repo
     var description: String {
         return "[Name: \(self.name!)]" +
             "\n\t[Stars: \(self.stars!)]" +
             "\n\t[Forks: \(self.forks!)]" +
             "\n\t[Owner: \(self.ownerHandle!)]" +
-            "\n\t[Avatar: \(self.ownerAvatarURL!)]"
+            "\n\t[Avatar: \(self.ownerAvatarURL!)]" +
+            "\n\t[Description: \(self.repoDescription!)]"
     }
 }
