@@ -28,6 +28,9 @@ class RepoResultsViewController: UIViewController {
         // Add SearchBar to the NavigationBar
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
+        
+        reposTableView.estimatedRowHeight = 100
+        reposTableView.rowHeight = UITableViewAutomaticDimension
 
         // Perform the first search when the view controller first loads
         doSearch()
