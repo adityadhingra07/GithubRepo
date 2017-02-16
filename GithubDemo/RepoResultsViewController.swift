@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
-class RepoResultsViewController: UIViewController {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var reposTableView: UITableView!
     var searchBar: UISearchBar!
@@ -28,11 +28,21 @@ class RepoResultsViewController: UIViewController {
         // Add SearchBar to the NavigationBar
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
-
+        
+        reposTableView.dataSource = self
+        reposTableView.delegate = self
+        
         // Perform the first search when the view controller first loads
         doSearch()
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return 
+    }
+    
     // Perform the search.
     fileprivate func doSearch() {
 
@@ -46,7 +56,7 @@ class RepoResultsViewController: UIViewController {
                 print(repo)
             }
             self.repos = newRepos
-            
+            self.reposTableView.reloadData()
 
             MBProgressHUD.hide(for: self.view, animated: true)
             }, error: { (error) -> Void in
