@@ -12,6 +12,7 @@ import MBProgressHUD
 // Main ViewController
 class RepoResultsViewController: UIViewController {
 
+    @IBOutlet weak var reposTableView: UITableView!
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
 
