@@ -31,12 +31,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
                     <connections>
-                        <outlet property="reposTableVIew" destination="Qha-vq-FzG" id="ZhO-J1-ZHu"/>
+                        <outlet property="reposTableView" destination="Qha-vq-FzG" id="BJR-Wi-uod"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.39999999999998" y="-558.17091454272872"/>
+            <point key="canvasLocation" x="950" y="-557"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">
