@@ -15,7 +15,7 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var reposTableView: UITableView!
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
-
+    
     var repos: [GithubRepo]!
 
     override func viewDidLoad() {
