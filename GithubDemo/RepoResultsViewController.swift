@@ -29,9 +29,14 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
+
         reposTableView.dataSource = self
         reposTableView.delegate = self
         
+
+        reposTableView.estimatedRowHeight = 100
+        reposTableView.rowHeight = UITableViewAutomaticDimension
+
         // Perform the first search when the view controller first loads
         doSearch()
     }
@@ -40,7 +45,7 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return 
+        
     }
     
     // Perform the search.
