@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="322" id="K7X-Ff-aPZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="322" id="K7X-Ff-aPZ" customClass="ReposTableViewCell" customModule="GithubDemo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="322"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7X-Ff-aPZ" id="dFZ-c5-L9b">
@@ -82,6 +82,14 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarUIImage" destination="sb1-HL-pKA" id="7qN-TR-W2b"/>
+                                            <outlet property="descLabel" destination="AmD-Sv-A4Y" id="H62-JH-NeR"/>
+                                            <outlet property="numForksLabel" destination="OKm-Na-7kf" id="bKs-ca-k9x"/>
+                                            <outlet property="numStarsLabel" destination="gNn-92-7HH" id="BYC-4Q-k7o"/>
+                                            <outlet property="ownerLabel" destination="mAc-Fl-G1A" id="dHf-rZ-WEy"/>
+                                            <outlet property="repoNameLabel" destination="m0H-yf-3S1" id="Eqg-ls-KAC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
