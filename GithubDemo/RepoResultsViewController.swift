@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import AFNetworking
 
 // Main ViewController
 class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -42,9 +43,32 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if let repos = repos {
+            return repos.count
+        }
+        else {
+            print("Repos is nill")
+            
+            return 0
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GithubTableCell", for: indexPath) as! ReposTableViewCell
+        
+        cell.selectionStyle = .none
+        
+        let repo = repos![indexPath.row]
+        
+        
+        cell.avatarUIImage.setImageWith(URL( string: repo.ownerAvatarURL!)!)
+        cell.repoNameLabel.text = repo.name
+        cell.ownerLabel.text = repo.ownerHandle
+        cell.numForksLabel.text = repo.forks as! String
+        cell.numStarsLabel.text = repo.stars as! String
+        cell.descLabel.text = repo.repoDescription
+        
+       return cell
         
     }
     
