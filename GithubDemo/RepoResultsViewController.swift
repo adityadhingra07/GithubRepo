@@ -22,6 +22,7 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Initialize the UISearchBar
         searchBar = UISearchBar()
         searchBar.delegate = self
@@ -34,9 +35,9 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         reposTableView.dataSource = self
         reposTableView.delegate = self
         
-
-//        reposTableView.estimatedRowHeight = 100
-//        reposTableView.rowHeight = UITableViewAutomaticDimension
+        reposTableView.rowHeight = UITableViewAutomaticDimension
+        reposTableView.estimatedRowHeight = 100
+        
 
         // Perform the first search when the view controller first loads
         doSearch()
@@ -89,7 +90,7 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
 
             MBProgressHUD.hide(for: self.view, animated: true)
             }, error: { (error) -> Void in
-                print(error)
+                print(error!)
         })
     }
 }
