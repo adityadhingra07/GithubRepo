@@ -35,8 +35,8 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         reposTableView.delegate = self
         
 
-        reposTableView.estimatedRowHeight = 100
-        reposTableView.rowHeight = UITableViewAutomaticDimension
+//        reposTableView.estimatedRowHeight = 100
+//        reposTableView.rowHeight = UITableViewAutomaticDimension
 
         // Perform the first search when the view controller first loads
         doSearch()
@@ -64,8 +64,8 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         cell.avatarUIImage.setImageWith(URL( string: repo.ownerAvatarURL!)!)
         cell.repoNameLabel.text = repo.name
         cell.ownerLabel.text = repo.ownerHandle
-        cell.numForksLabel.text = "\(repo.forks)"
-        cell.numStarsLabel.text = "\(repo.stars)"
+        cell.numForksLabel.text = "\(repo.forks!)"
+        cell.numStarsLabel.text = "\(repo.stars!)"
         cell.descLabel.text = repo.repoDescription
         
        return cell
