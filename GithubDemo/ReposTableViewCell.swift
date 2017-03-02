@@ -21,6 +21,8 @@ class ReposTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        avatarUIImage.layer.cornerRadius = 10
+        avatarUIImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
