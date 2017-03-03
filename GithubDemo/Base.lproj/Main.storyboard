@@ -157,25 +157,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Minimum Stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zj0-qs-PHz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Minimum Stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zj0-qs-PHz">
                                 <rect key="frame" x="16" y="136" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-V6-mIa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYl-3c-kiA">
+                                <rect key="frame" x="280" y="136" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="100000" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-V6-mIa">
                                 <rect key="frame" x="14" y="165" width="347" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Minimum Stars"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="Jv4-sc-Sve" eventType="valueChanged" id="dkA-xi-dRK"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zj0-qs-PHz" firstAttribute="leading" secondItem="kJJ-tP-HHW" secondAttribute="leading" constant="5" id="2No-5p-pm2"/>
+                            <constraint firstAttribute="trailing" secondItem="yRL-V6-mIa" secondAttribute="trailing" constant="10" id="AG0-RV-NKv"/>
+                            <constraint firstAttribute="trailing" secondItem="YYl-3c-kiA" secondAttribute="trailing" constant="5" id="Pec-H1-CTS"/>
+                            <constraint firstItem="zj0-qs-PHz" firstAttribute="top" secondItem="7uj-Og-fly" secondAttribute="bottom" constant="50" id="UPP-LT-VRB"/>
+                            <constraint firstItem="yRL-V6-mIa" firstAttribute="centerY" secondItem="kJJ-tP-HHW" secondAttribute="centerY" id="dcq-NA-Mcb"/>
+                            <constraint firstItem="yRL-V6-mIa" firstAttribute="leading" secondItem="kJJ-tP-HHW" secondAttribute="leading" constant="10" id="ev7-uk-D8W"/>
+                            <constraint firstItem="yRL-V6-mIa" firstAttribute="top" secondItem="YYl-3c-kiA" secondAttribute="bottom" constant="20" id="hWX-bP-ZPJ"/>
+                            <constraint firstItem="YYl-3c-kiA" firstAttribute="top" secondItem="7uj-Og-fly" secondAttribute="bottom" constant="50" id="r2W-a5-moC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y5C-xz-DL5">
-                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="gxm-UE-06c"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="3ya-sH-Pjk"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="gxm-UE-06c">
+                            <connections>
+                                <action selector="save:" destination="Jv4-sc-Sve" id="NmC-Gy-Pvz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="3ya-sH-Pjk">
+                            <connections>
+                                <action selector="cancel:" destination="Jv4-sc-Sve" id="mpM-85-l4W"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="numberStars" destination="YYl-3c-kiA" id="jgn-Z9-JNA"/>
+                        <outlet property="starslider" destination="yRL-V6-mIa" id="9x1-in-lYw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRd-gb-iry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -202,7 +231,6 @@
         <!--Navigation Controller-->
         <scene sceneID="b8g-AE-P5C">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fWN-F8-3OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8gO-53-oBY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jeg-Ni-VYa">
@@ -214,6 +242,7 @@
                         <segue destination="Jv4-sc-Sve" kind="relationship" relationship="rootViewController" id="PXv-VC-Vjj"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWN-F8-3OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1733.5999999999999" y="-583.3583208395803"/>
         </scene>

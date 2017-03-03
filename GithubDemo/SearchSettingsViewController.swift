@@ -8,8 +8,40 @@
 
 import UIKit
 
-class SearchSettingsViewController: UIViewController {
+protocol SettingsPresentingViewControllerDelegate: class {
+    func didSaveSettings(settings: GithubRepoSearchSettings)
+    func didCancelSettings()
+}
 
+class SearchSettingsViewController: UIViewController {
+    
+    var delegate: SettingsPresentingViewControllerDelegate?
+    var settings: GithubRepoSearchSettings?
+    
+    @IBOutlet weak var numberStars: UILabel!
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        settings?.minStars = Int(sender.value)
+        numberStars.text = String(format: "%d", (settings?.minStars)!)
+        print(sender.value)
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        self.dismiss(animated: true, completion: {() -> Void in
+            if let settings = self.settings {
+                self.delegate?.didSaveSettings(settings: settings)
+            }
+        })
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: {() -> Void in
+            self.delegate?.didCancelSettings()
+        })
+    }
+    
+    @IBOutlet weak var starslider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

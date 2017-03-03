@@ -11,7 +11,7 @@ import MBProgressHUD
 import AFNetworking
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsPresentingViewControllerDelegate {
 
     @IBOutlet weak var reposTableView: UITableView!
     var searchBar: UISearchBar!
@@ -92,6 +92,22 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
             }, error: { (error) -> Void in
                 print(error!)
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navController = segue.destination as! UINavigationController
+        let vc = navController.topViewController as! SearchSettingsViewController
+        vc.delegate = self
+        vc.settings = searchSettings
+    }
+    
+    func didSaveSettings(settings: GithubRepoSearchSettings){
+        searchSettings = settings
+        doSearch()
+    }
+    
+    func didCancelSettings(){
+        doSearch()
     }
 }
 
